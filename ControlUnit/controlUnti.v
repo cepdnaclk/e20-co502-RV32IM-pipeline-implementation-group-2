@@ -131,7 +131,47 @@ always(OPCODE,FUNCT3,FUNCT7) begin
         JUMP = 1'b1;
         ALU_OPCODE = 5'b00000;
     end
-    7'b0110111:
+    7'b0110111:begin // LUI
+        IMMEDIATE_TYPE = 3'b011;
+        WRITE_ENABLE = 1'b1;
+        MEMORY_ACCESS = 1'b0;
+        MEM_WRITE = 1'b0;
+        MEM_READ = 1'b0;
+        JUMP_AND_LINK = 1'b0;
+        IMMEDIATE_SELECT = 1'b1;
+        OFFSET_GENARATOR = 1'b0;
+        BRANCH = 1'b0;
+        JUMP = 1'b0;
+        ALU_OPCODE = 5'b10001;
+    end
+     7'b0010111:begin // AUIPC
+        IMMEDIATE_TYPE = 3'b011;
+        WRITE_ENABLE = 1'b1;
+        MEMORY_ACCESS = 1'b0;
+        MEM_WRITE = 1'b0;
+        MEM_READ = 1'b0;
+        JUMP_AND_LINK = 1'b0;
+        IMMEDIATE_SELECT = 1'b1;
+        OFFSET_GENARATOR = 1'b1;
+        BRANCH = 1'b0;
+        JUMP = 1'b0;
+        ALU_OPCODE = 5'b00000;
+    end
+    7'b0010111:begin // B type instruction
+        IMMEDIATE_TYPE = 3'b100;
+        WRITE_ENABLE = 1'b0;
+        MEMORY_ACCESS = 1'b0;
+        MEM_WRITE = 1'b0;
+        MEM_READ = 1'b0;
+        JUMP_AND_LINK = 1'b0;
+        IMMEDIATE_SELECT = 1'b1;
+        OFFSET_GENARATOR = 1'b1;
+        BRANCH = 1'b1;
+        JUMP = 1'b0;
+        ALU_OPCODE = 5'b00000;
+    end
+    
+
     endcase
 end
 
