@@ -2,7 +2,7 @@ module controlUnit(INSTRUCTION,WRITE_ENABLE,MEMORY_ACCESS,MEM_WRITE,MEM_READ,JUM
 input[31:0] INSTRUCTION;
 output reg[4:0] ALU_OPCODE;
 output reg[2:0] IMMEDIATE_TYPE;
-output reg WRITE_ENABLE,MEMORY_ACCESS,MEM_WRITE,MEM_READ,JUMP_AND_LINK,ALU_OPCODE,IMMEDIATE_SELECT,OFFSET_GENARATOR,BRANCH,JUMP;
+output reg WRITE_ENABLE,MEMORY_ACCESS,MEM_WRITE,MEM_READ,JUMP_AND_LINK,IMMEDIATE_SELECT,OFFSET_GENARATOR,BRANCH,JUMP;
 
 wire [6:0] OPCODE,FUNCT7;
 wire [2:0] FUNCT3;
@@ -11,9 +11,9 @@ assign OPCODE = INSTRUCTION[6:0];
 assign FUNCT3 = INSTRUCTION[14:12];
 assign FUNCT7 = INSTRUCTION[31:25];
 
-always(OPCODE,FUNCT3,FUNCT7) begin
+always @(OPCODE,FUNCT3,FUNCT7) begin
     case(OPCODE)
-    7'b1100011:begin //R type istruction
+    7'b0110011:begin //R type istruction
         IMMEDIATE_TYPE = 3'bxxx;
         WRITE_ENABLE = 1'b1;
         MEMORY_ACCESS = 1'b0;
@@ -157,7 +157,7 @@ always(OPCODE,FUNCT3,FUNCT7) begin
         JUMP = 1'b0;
         ALU_OPCODE = 5'b00000;
     end
-    7'b0010111:begin // B type instruction
+    7'b1100011:begin // B type instruction
         IMMEDIATE_TYPE = 3'b100;
         WRITE_ENABLE = 1'b0;
         MEMORY_ACCESS = 1'b0;
