@@ -41,7 +41,7 @@ always @(OPCODE,FUNCT3,FUNCT7) begin
         10'b0000001101:ALU_OPCODE = 5'b01101; // DIVH
         10'b0000001110:ALU_OPCODE = 5'b01110; // REM
         10'b0000001111:ALU_OPCODE = 5'b01111; // REMU
-        10'b0000000010:ALU_OPCODE = 5'b10000; // STL 
+        10'b0000000010:ALU_OPCODE = 5'b10000; // SLT 
         endcase
     end
 
@@ -58,7 +58,7 @@ always @(OPCODE,FUNCT3,FUNCT7) begin
         JUMP = 1'b0 ;
         case(FUNCT3)
         3'b000:ALU_OPCODE = 5'b00000; // ADDI
-        3'b010:ALU_OPCODE = 5'b10000; // STLI
+        3'b010:ALU_OPCODE = 5'b10000; // SLTI
         3'b111:ALU_OPCODE = 5'b00100; // ANDI
         3'b110:ALU_OPCODE = 5'b00010; // ORI
         3'b100:ALU_OPCODE = 5'b00011; // XORI
