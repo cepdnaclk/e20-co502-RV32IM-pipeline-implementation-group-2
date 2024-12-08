@@ -45,8 +45,8 @@ This project aims to implement an in-order 5-stage pipelined CPU which implement
 
 ## Links
 
-- [Project Repository](https://github.com/cepdnaclk/e20-co502-RV32IM-pipeline-implementation-group-2
-- [Project Page](https://cepdnaclk.github.io/e20-co502-RV32IM-pipeline-implementation-group-2
+- [Project Repository](https://github.com/cepdnaclk/e20-co502-RV32IM-pipeline-implementation-group-2)
+- [Project Page](https://cepdnaclk.github.io/e20-co502-RV32IM-pipeline-implementation-group-2)
 - [Department of Computer Engineering](http://www.ce.pdn.ac.lk/)
 - [University of Peradeniya](https://eng.pdn.ac.lk/)
 
