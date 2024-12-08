@@ -8,10 +8,10 @@ module tb_ALU ;
 
     integer i;
 
-    alu test_unit(DATA1,DATA2,OPCODE,ALU_OUTPUT);
+    alu test_unit(DATA1,DATA2,OPCODE,ALU_OUTPUT);                       // initiating the alu module 
     initial begin
-        $dumpfile("waveform.vcd"); 
-        $dumpvars(0, tb_ALU);
+        $monitor("Time=%0t, Data1=%d, Data2=%d, Output=%d", $time, DATA1, DATA2,ALU_OUTPUT);
+
             
         DATA1 = 32'd6;
         DATA2 = 32'd3;
