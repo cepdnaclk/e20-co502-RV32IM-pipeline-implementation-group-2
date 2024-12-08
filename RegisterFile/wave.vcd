@@ -1,0 +1,104 @@
+$date
+	Wed Dec 04 14:11:00 2024
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module RegisterFile_tb $end
+$var wire 32 ! DATA2 [31:0] $end
+$var wire 32 " DATA1 [31:0] $end
+$var reg 1 # CLK $end
+$var reg 1 $ RESET $end
+$var reg 5 % RS1 [4:0] $end
+$var reg 5 & RS2 [4:0] $end
+$var reg 5 ' WRITEADDRESS [4:0] $end
+$var reg 32 ( WRITEDATA [31:0] $end
+$var reg 1 ) WRITEENABLE $end
+$scope module uut $end
+$var wire 1 # CLK $end
+$var wire 1 $ RESET $end
+$var wire 5 * RS1 [4:0] $end
+$var wire 5 + RS2 [4:0] $end
+$var wire 5 , WRITEADDRESS [4:0] $end
+$var wire 32 - WRITEDATA [31:0] $end
+$var wire 1 ) WRITEENABLE $end
+$var reg 32 . DATA1 [31:0] $end
+$var reg 32 / DATA2 [31:0] $end
+$var integer 32 0 i [31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+bx 0
+bx /
+bx .
+bx -
+bx ,
+bx +
+bx *
+0)
+bx (
+bx '
+bx &
+bx %
+1$
+0#
+bx "
+bx !
+$end
+#5
+1#
+#6
+b100000 0
+#10
+0#
+1)
+b10100101101001011010010110100101 (
+b10100101101001011010010110100101 -
+b1 '
+b1 ,
+0$
+#15
+1#
+#20
+0#
+b0 &
+b0 +
+b1 %
+b1 *
+0)
+#22
+b0 !
+b0 /
+b10100101101001011010010110100101 "
+b10100101101001011010010110100101 .
+#25
+1#
+#30
+0#
+1)
+b1011010010110100101101001011010 (
+b1011010010110100101101001011010 -
+b10 '
+b10 ,
+#35
+1#
+#40
+0#
+b10 &
+b10 +
+0)
+#42
+b1011010010110100101101001011010 !
+b1011010010110100101101001011010 /
+#45
+1#
+#50
+0#
