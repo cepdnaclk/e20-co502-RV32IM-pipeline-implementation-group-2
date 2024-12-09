@@ -8,7 +8,7 @@ module BranchController_tb ();
     wire PCAddressController;
 
     // Instantiate the Unit Under Test (UUT)
-    BranchController Test_unit (        //ALUresult,Branch,Jump,TargetedAddress,PCAddressController);
+    BranchController Test_unit (        
         .data1(data1),
         .data2(data2),
         .func3(func3),
@@ -21,7 +21,7 @@ module BranchController_tb ();
 
     initial begin
         // Display monitored values
-        $monitor("Time=%0t, Output=%b, Branch=%b, Jump=%b", $time, PCAddressController, Branch_tb, Jump_tb);
+        $monitor("Time=%0t, Output=%b, Branch=%b, Jump=%b , TargetAddress=%d", $time, PCAddressController, Branch_tb, Jump_tb, TargetedAddress);
         
         // Initialize signals
         ALUresult = 32'd24; // Correct integer assignment syntax
@@ -45,6 +45,9 @@ module BranchController_tb ();
         func3 = 3'b101;
         #10;
         func3 = 3'b111;
+        #10;
+        Jump_tb=1'b1;
+        Branch_tb=1'b0;
         $finish;              // Stop the simulation
     end
 endmodule

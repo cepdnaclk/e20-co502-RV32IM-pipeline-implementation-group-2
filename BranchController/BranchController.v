@@ -6,9 +6,10 @@ module BranchController (data1,data2,func3,ALUresult,Branch,Jump,TargetedAddress
     output reg[31:0] TargetedAddress;
     output reg PCAddressController;
 
-    always @(*) begin
+    always @(data1,data2,func3,Branch,Jump,ALUresult) begin
         PCAddressController = 1'b0;                     // Initially the control flag set to 0(choose the PC+4 address)
         if (Branch==1'b1) begin 
+            TargetedAddress = ALUresult;
             case (func3)
                 3'b000:PCAddressController=(data1==data2)?1'b1:1'b0;                            //BEQ instruction
                 3'b001:PCAddressController=(data1!=data2)?1'b1:1'b0;                            //BNE instruction
@@ -18,6 +19,10 @@ module BranchController (data1,data2,func3,ALUresult,Branch,Jump,TargetedAddress
                 3'b111:PCAddressController=($unsigned(data1)>=$unsigned(data2))?1'b1:1'b0;      //BGEU instruction
                 default: PCAddressController=1'b0;
             endcase    
+        end
+        if (Jump==1'b1) begin
+            TargetedAddress =ALUresult;
+            PCAddressController =1'b1;                                                          //Jump Insruction
         end
         
         
