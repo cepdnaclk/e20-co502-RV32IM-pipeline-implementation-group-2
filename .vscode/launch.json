@@ -1,0 +1,24 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "externalConsole": true,
+      "cwd": "e:/CO502-2024  Advanced Computer Architecture (Nov 2024)/e20-co502-RV32IM-pipeline-implementation-group-2/ControlUnit",
+      "program": "e:/CO502-2024  Advanced Computer Architecture (Nov 2024)/e20-co502-RV32IM-pipeline-implementation-group-2/ControlUnit/build/Debug/outDebug",
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ]
+}
