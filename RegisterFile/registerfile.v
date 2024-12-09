@@ -72,7 +72,7 @@ module RegisterFile (RS1,RS2,WRITEDATA,WRITEADDRESS,WRITEENABLE,RESET,CLK,DATA1,
             registers[i] <= 0;
             end 
         end
-        else if(WRITEENABLE)
+        else if(WRITEENABLE && WRITEADDRESS != 5'd0)
         begin
             #1
             registers[WRITEADDRESS] <= WRITEDATA;

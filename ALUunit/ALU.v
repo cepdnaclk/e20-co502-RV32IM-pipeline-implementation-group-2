@@ -10,13 +10,13 @@ module alu (data1,data2,opcode,Output);
     wire [63:0] mulh_result,mulhu_result,mulhsu_result;
 
     assign mulh_result = $signed (data1)*$signed(data2) ;           // Calculation of Multiplication High instruction
-    assign MULH_result = mulh_result[63:31];
+    assign MULH_result = mulh_result[63:32];
 
     assign mulhu_result = $signed (data1)*$unsigned(data2) ;        // Calculation of Multiplication high unsigned values instruction
-    assign MULHU_result = mulhu_result[63:31];
+    assign MULHU_result = mulhu_result[63:32];
 
     assign mulhsu_result = $unsigned (data1)*$unsigned(data2) ;     // Calculation of Multiplication high signed unsigned instruction
-    assign MULHSU_result = mulhsu_result[63:31];
+    assign MULHSU_result = mulhsu_result[63:32];
 
     
     always @(*) begin
