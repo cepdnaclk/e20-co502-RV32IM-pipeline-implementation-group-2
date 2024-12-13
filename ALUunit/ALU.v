@@ -1,8 +1,8 @@
 // ALU unit
 
-module alu (data1,data2,opcode,Output);
+module alu (data1,data2,ALU_OPCODE,Output);
     input [31:0] data1,data2;
-    input [4:0] opcode;
+    input [4:0] ALU_OPCODE;
 
     output reg [31:0] Output;
 
@@ -20,7 +20,7 @@ module alu (data1,data2,opcode,Output);
 
     
     always @(*) begin
-        case (opcode)
+        case (ALU_OPCODE)
             5'b00000:Output = data1+data2;                          //ADD instruction
             5'b00001:Output = data1-data2;                          //SUB instruction
             5'b00010:Output = data1|data2;                          //OR instruction

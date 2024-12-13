@@ -1,3 +1,37 @@
+
+module RegisterFile (RS1,RS2,WRITEDATA,WRITEADDRESS,WRITEENABLE,RESET,CLK,DATA1,DATA2);
+    input [4:0] RS1,RS2,WRITEADDRESS;
+    input [31:0] WRITEDATA;
+    input CLK,WRITEENABLE,RESET;
+    output reg [31:0] DATA1,DATA2;
+    reg [31:0] registers [0:31];
+
+    integer i;
+    always @(posedge CLK)
+    begin
+        if(RESET)
+        begin
+            #1
+            for (i = 0;i<32 ;i++ )
+            begin
+            registers[i] <= 0;
+            end 
+        end
+        else if(WRITEENABLE && WRITEADDRESS != 5'd0)
+        begin
+            #1
+            registers[WRITEADDRESS] <= WRITEDATA;
+        end 
+    end
+    always @(RS1,RS2)
+    begin
+        #2
+        DATA1 <= registers[RS1];
+        DATA2 <= registers[RS2];
+    end
+
+endmodule
+
 module RegisterFile_tb;
     reg [4:0] RS1, RS2, WRITEADDRESS;
     reg [31:0] WRITEDATA;
@@ -49,40 +83,4 @@ module RegisterFile_tb;
 
         $finish;
     end
-endmodule
-
-
-
-
-module RegisterFile (RS1,RS2,WRITEDATA,WRITEADDRESS,WRITEENABLE,RESET,CLK,DATA1,DATA2);
-    input [4:0] RS1,RS2,WRITEADDRESS;
-    input [31:0] WRITEDATA;
-    input CLK,WRITEENABLE,RESET;
-    output reg [31:0] DATA1,DATA2;
-    reg [31:0] registers [0:31];
-
-    integer i;
-    always @(posedge CLK)
-    begin
-        if(RESET)
-        begin
-            #1
-            for (i = 0;i<32 ;i++ )
-            begin
-            registers[i] <= 0;
-            end 
-        end
-        else if(WRITEENABLE && WRITEADDRESS != 5'd0)
-        begin
-            #1
-            registers[WRITEADDRESS] <= WRITEDATA;
-        end 
-    end
-    always @(RS1,RS2)
-    begin
-        #2
-        DATA1 <= registers[RS1];
-        DATA2 <= registers[RS2];
-    end
-
 endmodule
