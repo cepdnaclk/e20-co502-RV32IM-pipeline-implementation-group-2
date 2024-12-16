@@ -1,0 +1,146 @@
+$date
+	Fri Dec 06 12:59:24 2024
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_ALU $end
+$var wire 32 ! ALU_OUTPUT [31:0] $end
+$var reg 32 " DATA1 [31:0] $end
+$var reg 32 # DATA2 [31:0] $end
+$var reg 5 $ OPCODE [4:0] $end
+$var integer 32 % i [31:0] $end
+$scope module test_unit $end
+$var wire 32 & data1 [31:0] $end
+$var wire 32 ' data2 [31:0] $end
+$var wire 5 ( opcode [4:0] $end
+$var wire 64 ) mulhu_result [63:0] $end
+$var wire 64 * mulhsu_result [63:0] $end
+$var wire 64 + mulh_result [63:0] $end
+$var wire 32 , SLT_result [31:0] $end
+$var wire 32 - MULH_result [31:0] $end
+$var wire 32 . MULHU_result [31:0] $end
+$var wire 32 / MULHSU_result [31:0] $end
+$var reg 32 0 Output [31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+b1001 0
+b0 /
+b0 .
+b0 -
+b0 ,
+b10010 +
+b10010 *
+b10010 )
+b0 (
+b11 '
+b110 &
+b0 %
+b0 $
+b11 #
+b110 "
+b1001 !
+$end
+#5
+b11 !
+b11 0
+b1 $
+b1 (
+b1 %
+#10
+b111 !
+b111 0
+b10 $
+b10 (
+b10 %
+#15
+b101 !
+b101 0
+b11 $
+b11 (
+b11 %
+#20
+b10 !
+b10 0
+b100 $
+b100 (
+b100 %
+#25
+b0 !
+b0 0
+b101 $
+b101 (
+b101 %
+#30
+b110000 !
+b110000 0
+b110 $
+b110 (
+b110 %
+#35
+b0 !
+b0 0
+b111 $
+b111 (
+b111 %
+#40
+b10010 !
+b10010 0
+b1000 $
+b1000 (
+b1000 %
+#45
+b0 !
+b0 0
+b1001 $
+b1001 (
+b1001 %
+#50
+b1010 $
+b1010 (
+b1010 %
+#55
+b1011 $
+b1011 (
+b1011 %
+#60
+b10 !
+b10 0
+b1100 $
+b1100 (
+b1100 %
+#65
+b1101 $
+b1101 (
+b1101 %
+#70
+b0 !
+b0 0
+b1110 $
+b1110 (
+b1110 %
+#75
+b1111 $
+b1111 (
+b1111 %
+#80
+b10000 $
+b10000 (
+b10000 %
+#85
+b11 !
+b11 0
+b10001 $
+b10001 (
+b10001 %
+#90
+b10010 %
