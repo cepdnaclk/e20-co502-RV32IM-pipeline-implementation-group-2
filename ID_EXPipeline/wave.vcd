@@ -1,0 +1,256 @@
+$date
+	Mon Dec 16 15:00:19 2024
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module ID_ExPipeline_tb $end
+$var wire 3 ! Out_func3 [2:0] $end
+$var wire 1 " Out_Write_Enable $end
+$var wire 5 # Out_WriteAddress [4:0] $end
+$var wire 32 $ Out_PC_next [31:0] $end
+$var wire 32 % Out_PC [31:0] $end
+$var wire 1 & Out_Offset_Generate $end
+$var wire 1 ' Out_Memory_Access $end
+$var wire 1 ( Out_Mem_Write $end
+$var wire 1 ) Out_Mem_Read $end
+$var wire 1 * Out_Jump_and_Link $end
+$var wire 1 + Out_Jump $end
+$var wire 32 , Out_Immediate_value [31:0] $end
+$var wire 1 - Out_Immediate_Select $end
+$var wire 32 . Out_Data2 [31:0] $end
+$var wire 32 / Out_Data1 [31:0] $end
+$var wire 1 0 Out_Branch $end
+$var wire 5 1 Out_ALU_Opcode [4:0] $end
+$var reg 5 2 ALU_Opcode [4:0] $end
+$var reg 1 3 Branch $end
+$var reg 1 4 CLK $end
+$var reg 32 5 Data1 [31:0] $end
+$var reg 32 6 Data2 [31:0] $end
+$var reg 1 7 Immediate_Select $end
+$var reg 32 8 Immediate_value [31:0] $end
+$var reg 1 9 Jump $end
+$var reg 1 : Jump_and_Link $end
+$var reg 1 ; Mem_Read $end
+$var reg 1 < Mem_Write $end
+$var reg 1 = Memory_Access $end
+$var reg 1 > Offset_Generate $end
+$var reg 32 ? PC [31:0] $end
+$var reg 32 @ PC_next [31:0] $end
+$var reg 1 A Reset $end
+$var reg 1 B Write_Enable $end
+$var reg 32 C instruction [31:0] $end
+$scope module uut $end
+$var wire 5 D ALU_Opcode [4:0] $end
+$var wire 1 3 Branch $end
+$var wire 1 4 CLK $end
+$var wire 32 E Data1 [31:0] $end
+$var wire 32 F Data2 [31:0] $end
+$var wire 1 7 Immediate_Select $end
+$var wire 32 G Immediate_value [31:0] $end
+$var wire 1 9 Jump $end
+$var wire 1 : Jump_and_Link $end
+$var wire 1 ; Mem_Read $end
+$var wire 1 < Mem_Write $end
+$var wire 1 = Memory_Access $end
+$var wire 1 > Offset_Generate $end
+$var wire 32 H PC [31:0] $end
+$var wire 32 I PC_next [31:0] $end
+$var wire 1 A Reset $end
+$var wire 1 B Write_Enable $end
+$var wire 32 J instruction [31:0] $end
+$var reg 5 K Out_ALU_Opcode [4:0] $end
+$var reg 1 0 Out_Branch $end
+$var reg 32 L Out_Data1 [31:0] $end
+$var reg 32 M Out_Data2 [31:0] $end
+$var reg 1 - Out_Immediate_Select $end
+$var reg 32 N Out_Immediate_value [31:0] $end
+$var reg 1 + Out_Jump $end
+$var reg 1 * Out_Jump_and_Link $end
+$var reg 1 ) Out_Mem_Read $end
+$var reg 1 ( Out_Mem_Write $end
+$var reg 1 ' Out_Memory_Access $end
+$var reg 1 & Out_Offset_Generate $end
+$var reg 32 O Out_PC [31:0] $end
+$var reg 32 P Out_PC_next [31:0] $end
+$var reg 5 Q Out_WriteAddress [4:0] $end
+$var reg 1 " Out_Write_Enable $end
+$var reg 3 R Out_func3 [2:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+bx R
+bx Q
+bx P
+bx O
+bx N
+bx M
+bx L
+bx K
+b0 J
+b100 I
+b0 H
+b111100000000011100010011 G
+b11111110111011011100000011011110 F
+b11011110101011011011111011101111 E
+b0 D
+b0 C
+0B
+1A
+b100 @
+b0 ?
+0>
+0=
+0<
+0;
+0:
+09
+b111100000000011100010011 8
+07
+b11111110111011011100000011011110 6
+b11011110101011011011111011101111 5
+04
+03
+b0 2
+bx 1
+x0
+bx /
+bx .
+x-
+bx ,
+x+
+x*
+x)
+x(
+x'
+x&
+bx %
+bx $
+bx #
+x"
+bx !
+$end
+#5000
+14
+#10000
+04
+0A
+#15000
+b111100000000011100010011 ,
+b111100000000011100010011 N
+b0 !
+b0 R
+b0 #
+b0 Q
+b11111110111011011100000011011110 .
+b11111110111011011100000011011110 M
+b11011110101011011011111011101111 /
+b11011110101011011011111011101111 L
+b100 $
+b100 P
+b0 %
+b0 O
+b0 1
+b0 K
+0+
+00
+0&
+0-
+0*
+0)
+0(
+0'
+0"
+14
+#20000
+04
+1A
+#25000
+bx ,
+bx N
+bx !
+bx R
+bx #
+bx Q
+bx .
+bx M
+bx /
+bx L
+bx $
+bx P
+bx %
+bx O
+bx 1
+bx K
+x+
+x0
+x&
+x-
+x*
+x)
+x(
+x'
+x"
+14
+#30000
+04
+b111100000000011100010011 C
+b111100000000011100010011 J
+b10000111011001010100001100100001 6
+b10000111011001010100001100100001 F
+b10010001101000101011001111000 5
+b10010001101000101011001111000 E
+b10000000000000000000000000100 @
+b10000000000000000000000000100 I
+b10000000000000000000000000000 ?
+b10000000000000000000000000000 H
+b1010 2
+b1010 D
+13
+1>
+17
+1<
+1=
+1B
+0A
+#35000
+b111100000000011100010011 ,
+b111100000000011100010011 N
+b0 !
+b0 R
+b1110 #
+b1110 Q
+b10000111011001010100001100100001 .
+b10000111011001010100001100100001 M
+b10010001101000101011001111000 /
+b10010001101000101011001111000 L
+b10000000000000000000000000100 $
+b10000000000000000000000000100 P
+b10000000000000000000000000000 %
+b10000000000000000000000000000 O
+b1010 1
+b1010 K
+0+
+10
+1&
+1-
+0*
+0)
+1(
+1'
+1"
+14
+#40000
+04
+#45000
+14
+#50000
+04
