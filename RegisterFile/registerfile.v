@@ -1,3 +1,4 @@
+
 module RegisterFile_tb;
     reg [4:0] RS1, RS2, WRITEADDRESS;
     reg [31:0] WRITEDATA;
@@ -50,8 +51,6 @@ module RegisterFile_tb;
         $finish;
     end
 endmodule
-
-
 
 
 module RegisterFile (RS1,RS2,WRITEDATA,WRITEADDRESS,WRITEENABLE,RESET,CLK,DATA1,DATA2);
@@ -114,3 +113,4 @@ module RegisterFile (RS1,RS2,WRITEDATA,WRITEADDRESS,WRITEENABLE,RESET,CLK,DATA1,
     end
 
 endmodule
+
