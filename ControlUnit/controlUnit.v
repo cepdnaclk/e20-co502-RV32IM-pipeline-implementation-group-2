@@ -12,6 +12,7 @@ assign FUNCT3 = INSTRUCTION[14:12];
 assign FUNCT7 = INSTRUCTION[31:25];
 
 always @(OPCODE,FUNCT3,FUNCT7) begin
+    #1
     case(OPCODE)
     7'b0110011:begin //R type istruction
         IMMEDIATE_TYPE = 3'bxxx;

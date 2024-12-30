@@ -1,8 +1,8 @@
 // ALU unit
 
-module alu (data1,data2,opcode,Output);
+module alu (data1,data2,ALU_OPCODE,Output);
     input [31:0] data1,data2;
-    input [4:0] opcode;
+    input [4:0] ALU_OPCODE;
 
     output reg [31:0] Output;
 
@@ -20,6 +20,7 @@ module alu (data1,data2,opcode,Output);
 
     
     always @(*) begin
+
         case (opcode)
             5'b00000:#2 Output = data1+data2;                          //ADD instruction
             5'b00001:#2 Output = data1-data2;                          //SUB instruction
@@ -40,6 +41,7 @@ module alu (data1,data2,opcode,Output);
             5'b10000:#2 Output = (data1<data2)?32'b1:32'b0;            //SLT instruction
             5'b10001:#1 Output = data2;                                //Forwarding instruction
             default:#1 Output = 32'b0;
+
         endcase
     end
    
