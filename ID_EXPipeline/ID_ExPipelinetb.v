@@ -1,4 +1,4 @@
-`timescale 1ns/1ps
+
 
 module ID_ExPipeline_tb;
     // Testbench signals
