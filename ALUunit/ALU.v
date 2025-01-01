@@ -21,7 +21,7 @@ module alu (data1,data2,ALU_OPCODE,Output);
     
     always @(*) begin
 
-        case (opcode)
+        case (ALU_OPCODE)
             5'b00000:#2 Output = data1+data2;                          //ADD instruction
             5'b00001:#2 Output = data1-data2;                          //SUB instruction
             5'b00010:#1 Output = data1|data2;                          //OR instruction

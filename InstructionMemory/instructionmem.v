@@ -1,8 +1,8 @@
 module instruction_memory(CLK,READ,ADDRESS,READINST,BUSYWAIT);
 input				CLK;
 input				READ;
-input[5:0]			ADDRESS;
-output reg [127:0]	READINST;
+input[31:0]			ADDRESS;
+output reg [31:0]	READINST;
 output	reg			BUSYWAIT;
 
 
@@ -15,6 +15,7 @@ initial
 begin
 	BUSYWAIT = 0;
 	
+
   //Hardcoded instructions
   
    {memory_array[10'd3],  memory_array[10'd2],  memory_array[10'd1],  memory_array[10'd0]}  = 32'b00000000000001000000000000011001; // loadi 4 #25
@@ -40,18 +41,6 @@ begin
         READINST[15:8]    = #40 memory_array[{ADDRESS,4'b0001}];
         READINST[23:16]   = #40 memory_array[{ADDRESS,4'b0010}];
         READINST[31:24]   = #40 memory_array[{ADDRESS,4'b0011}];
-        READINST[39:32]   = #40 memory_array[{ADDRESS,4'b0100}];
-        READINST[47:40]   = #40 memory_array[{ADDRESS,4'b0101}];
-        READINST[55:48]   = #40 memory_array[{ADDRESS,4'b0110}];
-        READINST[63:56]   = #40 memory_array[{ADDRESS,4'b0111}];
-        READINST[71:64]   = #40 memory_array[{ADDRESS,4'b1000}];
-        READINST[79:72]   = #40 memory_array[{ADDRESS,4'b1001}];
-        READINST[87:80]   = #40 memory_array[{ADDRESS,4'b1010}];
-        READINST[95:88]   = #40 memory_array[{ADDRESS,4'b1011}];
-        READINST[103:96]  = #40 memory_array[{ADDRESS,4'b1100}];
-        READINST[111:104] = #40 memory_array[{ADDRESS,4'b1101}];
-        READINST[119:112] = #40 memory_array[{ADDRESS,4'b1110}];
-        READINST[127:120] = #40 memory_array[{ADDRESS,4'b1111}];
         BUSYWAIT = 0;
 	end
 end
