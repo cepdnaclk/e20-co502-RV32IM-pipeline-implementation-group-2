@@ -6,6 +6,10 @@ module BranchController (data1,data2,func3,ALUresult,Branch,Jump,TargetedAddress
     output reg[31:0] TargetedAddress;
     output reg PCAddressController;
 
+    initial begin
+        PCAddressController = 1'b0;
+    end
+
     always @(data1,data2,func3,Branch,Jump,ALUresult) begin
         PCAddressController = 1'b0;                     // Initially the control flag set to 0(choose the PC+4 address)
         if (Branch==1'b1) begin 
