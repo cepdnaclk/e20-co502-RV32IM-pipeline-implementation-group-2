@@ -1,3 +1,4 @@
+
 module instruction_memory(CLK,READ,ADDRESS,READINST,BUSYWAIT);
 input				CLK;
 input				READ;
@@ -44,5 +45,5 @@ begin
         BUSYWAIT = 0;
 	end
 end
- 
+
 endmodule
