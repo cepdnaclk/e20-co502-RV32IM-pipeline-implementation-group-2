@@ -1,10 +1,12 @@
 
+
 // module instruction_memory(CLK,READ,ADDRESS,READINST,BUSYWAIT);
 // input				CLK;
 // input				READ;
 // input[5:0]			ADDRESS;
 // output reg [127:0]	READINST;
 // output	reg			BUSYWAIT;
+
 
 
 
@@ -16,7 +18,9 @@
 // begin
 // 	BUSYWAIT = 0;
 	
-//   //Hardcoded instructions
+
+  //Hardcoded instructions
+
   
 //    {memory_array[10'd3],  memory_array[10'd2],  memory_array[10'd1],  memory_array[10'd0]}  = 32'b00000000000001000000000000011001; // loadi 4 #25
 //    {memory_array[10'd7],  memory_array[10'd6],  memory_array[10'd5],  memory_array[10'd4]}  = 32'b00000000000001010000000000100011; // loadi 5 #35
@@ -79,6 +83,7 @@ initial begin
     // Add more instructions as needed
 end
 
+
 // Fetch instruction based on PC
 always @(posedge CLK or posedge RESET) begin
     #1
@@ -87,6 +92,7 @@ always @(posedge CLK or posedge RESET) begin
     end else begin
         INSTRUCTION <= memory_array[PC[9:2]]; // Fetch instruction (PC[9:2] to align with 32-bit words)
     end
+
 end
 
 endmodule
