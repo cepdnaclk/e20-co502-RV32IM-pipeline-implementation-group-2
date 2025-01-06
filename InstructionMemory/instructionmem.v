@@ -83,7 +83,15 @@ initial begin
   //  memory_array[3] = 32'b1111001_01100_00001_010_00011_0100011;  // SW x12, 0xF23(x1) 
     // Add more instructions as needed
 end
-
+//Reading
+always @(posedge CLK)
+begin
+        READINST[7:0]     = #40 memory_array[{ADDRESS,4'b0000}];
+        READINST[15:8]    = #40 memory_array[{ADDRESS,4'b0001}];
+        READINST[23:16]   = #40 memory_array[{ADDRESS,4'b0010}];
+        READINST[31:24]   = #40 memory_array[{ADDRESS,4'b0011}];
+        BUSYWAIT = 0;
+=======
 
 // Fetch instruction based on PC
 always @(posedge CLK or posedge RESET) begin
