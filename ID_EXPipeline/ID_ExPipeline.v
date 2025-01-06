@@ -11,6 +11,7 @@ module ID_ExPipeline (CLK,Reset,Write_Enable,Memory_Access,Mem_Write,Mem_Read,Ju
 
     always @(posedge CLK) begin
         if (Reset==1) begin
+            #1
             Out_Write_Enable <= 1'bx;
             Out_Memory_Access <= 1'bx;
             Out_Mem_Write <= 1'bx;
@@ -30,6 +31,7 @@ module ID_ExPipeline (CLK,Reset,Write_Enable,Memory_Access,Mem_Write,Mem_Read,Ju
             Out_Immediate_value <= 32'bx;
         end
         else begin
+            #2
             Out_Write_Enable <= Write_Enable;
             Out_Memory_Access <= Memory_Access;
             Out_Mem_Write <= Mem_Write;
