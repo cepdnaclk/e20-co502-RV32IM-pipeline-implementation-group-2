@@ -1,5 +1,5 @@
 $date
-	Thu Dec 12 22:12:44 2024
+	Mon Dec 30 14:31:27 2024
 $end
 $version
 	Icarus Verilog
@@ -27,13 +27,14 @@ $var wire 32 - WRITEDATA [31:0] $end
 $var wire 1 ) WRITEENABLE $end
 $var reg 32 . DATA1 [31:0] $end
 $var reg 32 / DATA2 [31:0] $end
-$var integer 32 0 i [31:0] $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
 #0
 $dumpvars
-bx 0
 bx /
 bx .
 bx -
@@ -52,8 +53,6 @@ bx !
 $end
 #5
 1#
-#6
-b100000 0
 #10
 0#
 1)
@@ -72,8 +71,6 @@ b1 %
 b1 *
 0)
 #22
-b0 !
-b0 /
 b10100101101001011010010110100101 "
 b10100101101001011010010110100101 .
 #25

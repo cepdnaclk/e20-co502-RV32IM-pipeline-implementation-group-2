@@ -1,0 +1,219 @@
+$date
+	Mon Dec 30 13:37:29 2024
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module EX_MEM_pipeline_tb $end
+$var wire 1 ! WRITE_ENABLE_OUT $end
+$var wire 5 " WRITE_ADDRESS_OUT [4:0] $end
+$var wire 1 # MEM_WRITE_OUT $end
+$var wire 1 $ MEM_READ_OUT $end
+$var wire 1 % MEM_ACCESS_OUT $end
+$var wire 3 & FUNCT3_OUT [2:0] $end
+$var wire 32 ' DATA2_OUT [31:0] $end
+$var wire 32 ( ALU_OUTPUT_OUT [31:0] $end
+$var reg 32 ) ALU_OUTPUT [31:0] $end
+$var reg 1 * CLK $end
+$var reg 32 + DATA2 [31:0] $end
+$var reg 3 , FUNCT3 [2:0] $end
+$var reg 1 - MEM_ACCESS $end
+$var reg 1 . MEM_READ $end
+$var reg 1 / MEM_WRITE $end
+$var reg 1 0 RESET $end
+$var reg 5 1 WRITE_ADDRESS [4:0] $end
+$var reg 1 2 WRITE_ENABLE $end
+$scope module uut $end
+$var wire 32 3 ALU_OUTPUT [31:0] $end
+$var wire 1 * CLK $end
+$var wire 32 4 DATA2 [31:0] $end
+$var wire 3 5 FUNCT3 [2:0] $end
+$var wire 1 - MEM_ACCESS $end
+$var wire 1 . MEM_READ $end
+$var wire 1 / MEM_WRITE $end
+$var wire 1 0 RESET $end
+$var wire 5 6 WRITE_ADDRESS [4:0] $end
+$var wire 1 2 WRITE_ENABLE $end
+$var reg 32 7 ALU_OUTPUT_OUT [31:0] $end
+$var reg 32 8 DATA2_OUT [31:0] $end
+$var reg 3 9 FUNCT3_OUT [2:0] $end
+$var reg 1 % MEM_ACCESS_OUT $end
+$var reg 1 $ MEM_READ_OUT $end
+$var reg 1 # MEM_WRITE_OUT $end
+$var reg 5 : WRITE_ADDRESS_OUT [4:0] $end
+$var reg 1 ! WRITE_ENABLE_OUT $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+bx :
+bx 9
+bx 8
+bx 7
+b0 6
+b0 5
+b0 4
+b0 3
+02
+b0 1
+10
+0/
+0.
+0-
+b0 ,
+b0 +
+0*
+b0 )
+bx (
+bx '
+bx &
+x%
+x$
+x#
+bx "
+x!
+$end
+#5
+1*
+#10
+0*
+00
+#15
+b0 '
+b0 8
+b0 &
+b0 9
+b0 "
+b0 :
+b0 (
+b0 7
+0$
+0#
+0%
+0!
+1*
+#20
+0*
+b111 ,
+b111 5
+b10101 1
+b10101 6
+b1011010010110100101101001011010 +
+b1011010010110100101101001011010 4
+b10100101101001011010010110100101 )
+b10100101101001011010010110100101 3
+1/
+1-
+12
+#25
+b1011010010110100101101001011010 '
+b1011010010110100101101001011010 8
+b111 &
+b111 9
+b10101 "
+b10101 :
+b10100101101001011010010110100101 (
+b10100101101001011010010110100101 7
+1#
+1%
+1!
+1*
+#30
+0*
+b0 ,
+b0 5
+b1 1
+b1 6
+b0 +
+b0 4
+b11111111111111111111111111111111 )
+b11111111111111111111111111111111 3
+1.
+0/
+0-
+02
+#35
+b0 '
+b0 8
+b0 &
+b0 9
+b1 "
+b1 :
+b11111111111111111111111111111111 (
+b11111111111111111111111111111111 7
+1$
+0#
+0%
+0!
+1*
+#40
+0*
+10
+#45
+bx '
+bx 8
+bx &
+bx 9
+bx "
+bx :
+bx (
+bx 7
+x$
+x#
+x%
+x!
+1*
+#50
+0*
+00
+#55
+b0 '
+b0 8
+b0 &
+b0 9
+b1 "
+b1 :
+b11111111111111111111111111111111 (
+b11111111111111111111111111111111 7
+1$
+0#
+0%
+0!
+1*
+#60
+0*
+b101 ,
+b101 5
+b11111 1
+b11111 6
+b10000111011001010100001100100001 +
+b10000111011001010100001100100001 4
+b10010001101000101011001111000 )
+b10010001101000101011001111000 3
+1-
+12
+#65
+b10000111011001010100001100100001 '
+b10000111011001010100001100100001 8
+b101 &
+b101 9
+b11111 "
+b11111 :
+b10010001101000101011001111000 (
+b10010001101000101011001111000 7
+1%
+1!
+1*
+#70
+0*
+#75
+1*
+#80
+0*
