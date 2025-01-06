@@ -76,10 +76,11 @@ reg [31:0] memory_array [0:255]; // Memory to store instructions
 // Initialize the instruction memory
 initial begin
     // Hardcoded instructions
-    memory_array[0] = 32'b100011110001_00001_000_00001_0010011;   // ADDI x1, x1, 0x8F1  // ADDI x1, x1, 0x8F1
-    memory_array[1] = 32'b0000000_00000_00001_111_01100_0010011;  // ANDI x1, x12, 0x000
-    memory_array[2] = 32'b111100100011_01100_000_00010_0000011;   // LB x2, 0xF23(x12) 
-    memory_array[3] = 32'b1111001_01100_00001_010_00011_0100011;  // SW x12, 0xF23(x1) 
+
+    memory_array[0] = 32'b000000000001_00000_000_00101_0010011;   // ADDI x5, x0, 1
+    memory_array[1] = 32'b000000000011_00000_000_00110_0010011;  // ANDI x6, x0,3
+    memory_array[2] = 32'b0000000_00110_00101_000_00111_0110011;  // AND x7, x5, x6 
+  //  memory_array[3] = 32'b1111001_01100_00001_010_00011_0100011;  // SW x12, 0xF23(x1) 
     // Add more instructions as needed
 end
 
