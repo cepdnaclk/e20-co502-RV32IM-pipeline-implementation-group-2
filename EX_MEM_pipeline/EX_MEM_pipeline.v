@@ -11,6 +11,7 @@ module EX_MEM_pipeline (CLK,RESET,WRITE_ENABLE,MEM_ACCESS,MEM_WRITE,MEM_READ,ALU
 
     always @(posedge CLK) begin
         if(RESET) begin
+            #1
             WRITE_ENABLE_OUT <= 1'bx;
             MEM_ACCESS_OUT <= 1'bx;
             MEM_WRITE_OUT <= 1'bx;
@@ -21,6 +22,7 @@ module EX_MEM_pipeline (CLK,RESET,WRITE_ENABLE,MEM_ACCESS,MEM_WRITE,MEM_READ,ALU
             DATA2_OUT <= 32'bx;
         end
         else begin
+            #2
             WRITE_ENABLE_OUT <= WRITE_ENABLE;
             MEM_ACCESS_OUT <= MEM_ACCESS;
             MEM_WRITE_OUT <= MEM_WRITE;
