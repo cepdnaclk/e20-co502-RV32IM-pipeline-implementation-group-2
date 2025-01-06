@@ -59,7 +59,7 @@ module RegisterFile(RS1,RS2,WRITEDATA,WRITEADDRESS,WRITEENABLE,RESET,CLK,DATA1,D
         DATA2 <= registers[RS2];
     end
 
-        // Initial block to dump register values
+    // Initial block to dump register values
     initial begin
         $dumpfile("reg_wavedata.vcd");
         for(i = 0; i < 32; i = i + 1)begin
