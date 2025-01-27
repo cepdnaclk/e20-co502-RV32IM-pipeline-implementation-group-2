@@ -93,26 +93,29 @@ always @(posedge CLK)
 begin
     if(READ)
     begin
-        READDATA =#40 {memory_array[ADDRESS],memory_array[ADDRESS+1],memory_array[ADDRESS+2],memory_array[ADDRESS+3]};
+        READDATA =#1 {memory_array[ADDRESS],memory_array[ADDRESS+1],memory_array[ADDRESS+2],memory_array[ADDRESS+3]};
     end
     if(WRITE)
 	begin
         case(FUNCT3)
         3'b000: //SB
         begin
-            memory_array[ADDRESS] <=#1 WRITEDATA[7:0];
+            #2
+            memory_array[ADDRESS] <= WRITEDATA[7:0];
         end
         3'b001: //SH
         begin
-            memory_array[ADDRESS]   <=#1 WRITEDATA[7:0];    
-            memory_array[ADDRESS+1] <=#1 WRITEDATA[15:8];   
+            #2
+            memory_array[ADDRESS]   <= WRITEDATA[7:0];    
+            memory_array[ADDRESS+1] <= WRITEDATA[15:8];   
         end
         3'b010: //SW
         begin
-            memory_array[ADDRESS]   <=#1 WRITEDATA[7:0];    
-            memory_array[ADDRESS+1] <=#1 WRITEDATA[15:8];   
-            memory_array[ADDRESS+2] <=#1 WRITEDATA[23:16]; 
-            memory_array[ADDRESS+3] <=#1 WRITEDATA[31:24];  
+            #2
+            memory_array[ADDRESS]   <= WRITEDATA[7:0];    
+            memory_array[ADDRESS+1] <= WRITEDATA[15:8];   
+            memory_array[ADDRESS+2] <= WRITEDATA[23:16]; 
+            memory_array[ADDRESS+3] <= WRITEDATA[31:24];  
         end
         endcase
     end
