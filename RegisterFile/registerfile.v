@@ -6,11 +6,13 @@ module RegisterFile(RS1,RS2,WRITEDATA,WRITEADDRESS,WRITEENABLE,RESET,CLK,DATA1,D
     reg [31:0] registers [0:31];
 
     integer i;
+
     always @(posedge CLK)
     begin
         if(RESET)
         begin
             #1
+            registers[0] <= 0;
             registers[1] <= 0;
             registers[2] <= 0;
             registers[3] <= 0;
@@ -56,6 +58,9 @@ module RegisterFile(RS1,RS2,WRITEDATA,WRITEADDRESS,WRITEENABLE,RESET,CLK,DATA1,D
         DATA1 <= registers[RS1];
         DATA2 <= registers[RS2];
     end
+
+    // Initial block to dump register values
+   
 
 endmodule
 

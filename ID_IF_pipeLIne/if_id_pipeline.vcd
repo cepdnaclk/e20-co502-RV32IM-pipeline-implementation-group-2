@@ -1,0 +1,142 @@
+$date
+	Wed Jan 15 21:11:54 2025
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module TB_ID_IF_register $end
+$var wire 32 ! PC_PLUS_4_OUT [31:0] $end
+$var wire 32 " PC_OUT [31:0] $end
+$var wire 32 # INSTRUCTION_OUT [31:0] $end
+$var reg 1 $ CLK $end
+$var reg 32 % INSTRUCTION [31:0] $end
+$var reg 32 & PC [31:0] $end
+$var reg 32 ' PC_PLUS_4 [31:0] $end
+$var reg 1 ( RESET $end
+$scope module uut $end
+$var wire 1 $ CLK $end
+$var wire 32 ) INSTRUCTION [31:0] $end
+$var wire 32 * PC [31:0] $end
+$var wire 32 + PC_PLUS_4 [31:0] $end
+$var wire 1 ( RESET $end
+$var reg 32 , INSTRUCTION_OUT [31:0] $end
+$var reg 32 - PC_OUT [31:0] $end
+$var reg 32 . PC_PLUS_4_OUT [31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+bx .
+bx -
+bx ,
+b0 +
+b0 *
+b0 )
+1(
+b0 '
+b0 &
+b0 %
+0$
+bx #
+bx "
+bx !
+$end
+#5
+1$
+#6
+b0 !
+b0 .
+b0 "
+b0 -
+b0 #
+b0 ,
+#10
+0$
+0(
+#15
+1$
+#20
+0$
+b10100 '
+b10100 +
+b10000 &
+b10000 *
+b10101010101110111100110011011101 %
+b10101010101110111100110011011101 )
+#25
+1$
+#27
+b10100 !
+b10100 .
+b10000 "
+b10000 -
+b10101010101110111100110011011101 #
+b10101010101110111100110011011101 ,
+#30
+0$
+#35
+1$
+#40
+0$
+b100100 '
+b100100 +
+b100000 &
+b100000 *
+b10010001101000101011001111000 %
+b10010001101000101011001111000 )
+#45
+1$
+#47
+b100100 !
+b100100 .
+b100000 "
+b100000 -
+b10010001101000101011001111000 #
+b10010001101000101011001111000 ,
+#50
+0$
+#55
+1$
+#60
+0$
+1(
+#65
+1$
+#66
+b0 !
+b0 .
+b0 "
+b0 -
+b0 #
+b0 ,
+#70
+0$
+b110100 '
+b110100 +
+b110000 &
+b110000 *
+b11111111111111111111111111111111 %
+b11111111111111111111111111111111 )
+0(
+#75
+1$
+#77
+b110100 !
+b110100 .
+b110000 "
+b110000 -
+b11111111111111111111111111111111 #
+b11111111111111111111111111111111 ,
+#80
+0$
+#85
+1$
+#90
+0$
