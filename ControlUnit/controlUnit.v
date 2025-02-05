@@ -2,17 +2,19 @@ module controlUnit(INSTRUCTION,WRITE_ENABLE,MEMORY_ACCESS,MEM_WRITE,MEM_READ,JUM
 input[31:0] INSTRUCTION;
 output reg[4:0] ALU_OPCODE;
 output reg[2:0] IMMEDIATE_TYPE;
-output reg WRITE_ENABLE,MEMORY_ACCESS,MEM_WRITE,MEM_READ,JUMP_AND_LINK,IMMEDIATE_SELECT,OFFSET_GENARATOR,BRANCH,JUMP;
-
+output reg WRITE_ENABLE,MEMORY_ACCESS,MEM_WRITE,MEM_READ,JUMP_AND_LINK,BRANCH,JUMP;
+output reg[1:0]OFFSET_GENARATOR,IMMEDIATE_SELECT;
 wire [6:0] OPCODE,FUNCT7;
 wire [2:0] FUNCT3;
+
 
 assign OPCODE = INSTRUCTION[6:0];
 assign FUNCT3 = INSTRUCTION[14:12];
 assign FUNCT7 = INSTRUCTION[31:25];
 
+
 always @(OPCODE,FUNCT3,FUNCT7) begin
-    #1
+    #1 
     case(OPCODE)
     7'b0110011:begin //R type istruction
         IMMEDIATE_TYPE = 3'bxxx;
@@ -21,10 +23,11 @@ always @(OPCODE,FUNCT3,FUNCT7) begin
         MEM_WRITE = 1'b0;
         MEM_READ = 1'b0;
         JUMP_AND_LINK = 1'b0;
-        IMMEDIATE_SELECT = 1'b0;
-        OFFSET_GENARATOR = 1'b0;
+        IMMEDIATE_SELECT = 2'b00;
+        OFFSET_GENARATOR = 2'b00;
         BRANCH = 1'b0;
         JUMP = 1'b0 ;
+        
         case({FUNCT7,FUNCT3})
         10'b0000000000:ALU_OPCODE = 5'b00000; // ADD
         10'b0100000000:ALU_OPCODE = 5'b00001; // SUB
@@ -53,8 +56,8 @@ always @(OPCODE,FUNCT3,FUNCT7) begin
         MEM_WRITE = 1'b0;
         MEM_READ = 1'b0;
         JUMP_AND_LINK = 1'b0;
-        IMMEDIATE_SELECT = 1'b1;
-        OFFSET_GENARATOR = 1'b0;
+        IMMEDIATE_SELECT = 2'b10;
+        OFFSET_GENARATOR = 2'b00;
         BRANCH = 1'b0;
         JUMP = 1'b0 ;
         case(FUNCT3)
@@ -87,8 +90,8 @@ always @(OPCODE,FUNCT3,FUNCT7) begin
         MEM_WRITE = 1'b0;
         MEM_READ = 1'b1;
         JUMP_AND_LINK = 1'b0;
-        IMMEDIATE_SELECT = 1'b1;
-        OFFSET_GENARATOR = 1'b0;
+        IMMEDIATE_SELECT = 2'b10;
+        OFFSET_GENARATOR = 2'b00;
         BRANCH = 1'b0;
         JUMP = 1'b0 ;
         ALU_OPCODE = 5'b00000;
@@ -100,8 +103,8 @@ always @(OPCODE,FUNCT3,FUNCT7) begin
         MEM_WRITE = 1'b1;    
         MEM_READ = 1'b0;
         JUMP_AND_LINK = 1'b0;    
-        IMMEDIATE_SELECT = 1'b1;
-        OFFSET_GENARATOR = 1'b0;
+        IMMEDIATE_SELECT = 2'b10;
+        OFFSET_GENARATOR = 2'b00;
         BRANCH = 1'b0;
         JUMP = 1'b0 ;
         ALU_OPCODE = 5'b00000; 
@@ -113,8 +116,8 @@ always @(OPCODE,FUNCT3,FUNCT7) begin
         MEM_WRITE = 1'b0;
         MEM_READ = 1'b0;
         JUMP_AND_LINK = 1'b1;
-        IMMEDIATE_SELECT = 1'b1;
-        OFFSET_GENARATOR = 1'b1;
+        IMMEDIATE_SELECT = 2'b10;
+        OFFSET_GENARATOR = 2'b10;
         BRANCH = 1'b0;
         JUMP = 1'b1 ;
         ALU_OPCODE = 5'b00000;
@@ -126,8 +129,8 @@ always @(OPCODE,FUNCT3,FUNCT7) begin
         MEM_WRITE = 1'b0;
         MEM_READ = 1'b0;
         JUMP_AND_LINK = 1'b1;
-        IMMEDIATE_SELECT = 1'b1;
-        OFFSET_GENARATOR = 1'b0;
+        IMMEDIATE_SELECT = 2'b10;
+        OFFSET_GENARATOR = 2'b00;
         BRANCH = 1'b0;
         JUMP = 1'b1;
         ALU_OPCODE = 5'b00000;
@@ -139,8 +142,8 @@ always @(OPCODE,FUNCT3,FUNCT7) begin
         MEM_WRITE = 1'b0;
         MEM_READ = 1'b0;
         JUMP_AND_LINK = 1'b0;
-        IMMEDIATE_SELECT = 1'b1;
-        OFFSET_GENARATOR = 1'b0;
+        IMMEDIATE_SELECT = 2'b10;
+        OFFSET_GENARATOR = 2'b00;
         BRANCH = 1'b0;
         JUMP = 1'b0;
         ALU_OPCODE = 5'b10001;
@@ -152,8 +155,8 @@ always @(OPCODE,FUNCT3,FUNCT7) begin
         MEM_WRITE = 1'b0;
         MEM_READ = 1'b0;
         JUMP_AND_LINK = 1'b0;
-        IMMEDIATE_SELECT = 1'b1;
-        OFFSET_GENARATOR = 1'b1;
+        IMMEDIATE_SELECT = 2'b10;
+        OFFSET_GENARATOR = 2'b10;
         BRANCH = 1'b0;
         JUMP = 1'b0;
         ALU_OPCODE = 5'b00000;
@@ -165,8 +168,8 @@ always @(OPCODE,FUNCT3,FUNCT7) begin
         MEM_WRITE = 1'b0;
         MEM_READ = 1'b0;
         JUMP_AND_LINK = 1'b0;
-        IMMEDIATE_SELECT = 1'b1;
-        OFFSET_GENARATOR = 1'b1;
+        IMMEDIATE_SELECT = 2'b10;
+        OFFSET_GENARATOR = 2'b10;
         BRANCH = 1'b1;
         JUMP = 1'b0;
         ALU_OPCODE = 5'b00000;
@@ -176,8 +179,6 @@ always @(OPCODE,FUNCT3,FUNCT7) begin
     endcase
 end
 
-
-
-
-
 endmodule
+
+
