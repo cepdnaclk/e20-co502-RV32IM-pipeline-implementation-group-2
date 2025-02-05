@@ -33,6 +33,12 @@ module cpu_testbench;
     initial begin
         $dumpfile("cpu_pipeline.vcd"); // Name of the dump file
         $dumpvars(0, cpu_testbench);    // Dump all variables in this module
+        for (integer i = 0;i<32 ;i=i+1 ) begin
+        $dumpvars(0, cpu_inst.registerfile1.registers[i]);    // Dump all variables in this module    
+        end
+        for (integer i = 0;i<20 ;i=i+1 ) begin
+        $dumpvars(0, cpu_inst.datamemory1.memory_array[i]);    // Dump all variables in this module    
+        end
     end
 
 endmodule

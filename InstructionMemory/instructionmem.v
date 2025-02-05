@@ -63,8 +63,7 @@
 
 // endmodule
 
-module instruction_memory (
-    input CLK,            // Clock signal
+module instruction_memory (          // Clock signal
     input RESET,          // Reset signal
     input [31:0] PC,      // 32-bit Program Counter
     output reg [31:0] INSTRUCTION // 32-bit instruction output
@@ -77,24 +76,32 @@ reg [31:0] memory_array [0:255]; // Memory to store instructions
 initial begin
     // Hardcoded instructions
 
-    memory_array[0] = 32'b000000000001_00000_000_00101_0010011;   // ADDI x5, x0, 1
-    memory_array[1] = 32'b000000000011_00000_000_00110_0010011;  // ANDI x6, x0,3
-    memory_array[2] = 32'b0000000_00110_00101_000_00111_0110011;  // AND x7, x5, x6 
+memory_array[0] = 32'b000000001100_00000_000_00101_0010011;   // ADDI x5, x0, 12
+memory_array[1] = 32'b000000000101_00000_000_00110_0010011;   // ADDI x6, x0, 5
+memory_array[2] = 32'b000000001100_00000_000_00100_0010011;   // ADDI x4, x0, 12
+memory_array[3] = 32'b0000000_00000_00000_110_00000_0110011;  // OR x0, x0, x0  (NOP)
+memory_array[4] = 32'b0000000_00000_00000_110_00000_0110011;  // OR x0, x0, x0  (NOP)
+memory_array[5] = 32'b0000000_00000_00000_110_00000_0110011;  // OR x0, x0, x0  (NOP)
+memory_array[6] = 32'b0000000_00101_00100_000_10000_1100011;  // BEQ x4, x5, +16
+memory_array[7] = 32'b0000000_00000_00000_110_00000_0110011;  // OR x0, x0, x0  (NOP) (Branch delay slot)
+memory_array[8] = 32'b0000000_00000_00000_110_00000_0110011;  // OR x0, x0, x0  (NOP) (Branch delay slot)
+memory_array[9] = 32'b0000000_00110_00101_000_00111_0110011;  // ADD x7, x5, x6 (Execute if branch not taken)
+memory_array[10] = 32'b0100000_00110_00100_000_01000_0110011;  // SUB x8, x4, x6
+memory_array[11] = 32'b0000000_00100_00000_010_10000_0100011; // SW x4, 0(x16)
+
+   
+
+
+
+  
+
   //  memory_array[3] = 32'b1111001_01100_00001_010_00011_0100011;  // SW x12, 0xF23(x1) 
     // Add more instructions as needed
 end
 //Reading
-always @(posedge CLK)
-begin
-        READINST[7:0]     = #40 memory_array[{ADDRESS,4'b0000}];
-        READINST[15:8]    = #40 memory_array[{ADDRESS,4'b0001}];
-        READINST[23:16]   = #40 memory_array[{ADDRESS,4'b0010}];
-        READINST[31:24]   = #40 memory_array[{ADDRESS,4'b0011}];
-        BUSYWAIT = 0;
-=======
 
 // Fetch instruction based on PC
-always @(posedge CLK or posedge RESET) begin
+always @(PC,RESET) begin
     #1
     if (RESET) begin
         INSTRUCTION <= 32'b0; // Output zero on reset

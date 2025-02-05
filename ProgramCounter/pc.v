@@ -7,12 +7,12 @@ module pc (PCIN,RESET,CLK,PCOUT);
     begin
         if(RESET)
         begin
-            #1
+            #2
             PCOUT <= 0;
         end
         else
         begin
-            #1
+            #2
             PCOUT <= PCIN;
         end
     end
