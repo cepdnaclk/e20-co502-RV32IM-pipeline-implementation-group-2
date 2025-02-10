@@ -1,9 +1,9 @@
-module ID_ExPipeline (CLK,Reset,Write_Enable,Memory_Access,Mem_Write,Mem_Read,Jump_and_Link,ALU_Opcode,Immediate_Select,Offset_Generate,Branch,Jump,PC,PC_next,Data1,Data2,instruction,Immediate_value,Out_Write_Enable,Out_Memory_Access,Out_Mem_Write,Out_Mem_Read,Out_Jump_and_Link,Out_ALU_Opcode,Out_Immediate_Select,Out_Offset_Generate,Out_Branch,Out_Jump,Out_PC,Out_PC_next,Out_Data1,Out_Data2,Out_WriteAddress,Out_func3,Out_Immediate_value);
+module ID_ExPipeline (CLK,Reset,Write_Enable,Memory_Access,Mem_Write,Mem_Read,Jump_and_Link,ALU_Opcode,Immediate_Select,Offset_Generate,Branch,Jump,PC,PC_next,Data1,Data2,instruction,Immediate_value,Out_Write_Enable,Out_Memory_Access,Out_Mem_Write,Out_Mem_Read,Out_Jump_and_Link,Out_ALU_Opcode,Out_Immediate_Select,Out_Offset_Generate,Out_Branch,Out_Jump,Out_PC,Out_PC_next,Out_Data1,Out_Data2,Out_WriteAddress,Out_func3,Out_Immediate_value,STALL);
     input Write_Enable,Memory_Access,Mem_Write,Mem_Read,Jump_and_Link,Branch,Jump;
     input [1:0] Immediate_Select,Offset_Generate;
     input[4:0] ALU_Opcode;
     input[31:0] PC,PC_next,Data1,Data2,instruction,Immediate_value;
-    input CLK,Reset;
+    input CLK,Reset,STALL;
     output reg Out_Write_Enable,Out_Memory_Access,Out_Mem_Write,Out_Mem_Read,Out_Jump_and_Link,Out_Branch,Out_Jump;
     output reg[1:0] Out_Immediate_Select,Out_Offset_Generate;
     output reg[4:0] Out_ALU_Opcode;
@@ -31,6 +31,26 @@ module ID_ExPipeline (CLK,Reset,Write_Enable,Memory_Access,Mem_Write,Mem_Read,Ju
             Out_WriteAddress <= 5'bx;
             Out_func3 <= 3'bx;
             Out_Immediate_value <= 32'bx;
+        end
+        else if (STALL) begin
+            #2
+            Out_Write_Enable <= 1'b0;
+            Out_Memory_Access <= 1'b0;
+            Out_Mem_Write <= 1'b0;
+            Out_Mem_Read <= 1'b0;
+            Out_Jump_and_Link <= 1'b0;
+            Out_Immediate_Select <= 2'b0;
+            Out_Offset_Generate <= 2'b0;
+            Out_Branch <= 1'b0;
+            Out_Jump <= 1'b0;
+            Out_ALU_Opcode <= 5'b0;
+            Out_PC <= 32'b0;
+            Out_PC_next <= 32'b0;
+            Out_Data1 <= 32'b0;
+            Out_Data2 <= 32'b0;
+            Out_WriteAddress <= 5'b0;
+            Out_func3 <= 3'b0;
+            Out_Immediate_value <= 32'b0;
         end
         else begin
             #2
