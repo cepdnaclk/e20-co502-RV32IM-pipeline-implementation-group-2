@@ -7,7 +7,7 @@ module RegisterFile(RS1,RS2,WRITEDATA,WRITEADDRESS,WRITEENABLE,RESET,CLK,DATA1,D
 
     integer i;
 
-    always @(posedge CLK)
+    always @(*)
     begin
         if(RESET)
         begin
