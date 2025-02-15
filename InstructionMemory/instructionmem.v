@@ -74,19 +74,40 @@ reg [31:0] memory_array [0:255]; // Memory to store instructions
 
 // Initialize the instruction memory
 initial begin
-    // Hardcoded instructions
-memory_array[0] = 32'b000000000111_00000_000_00110_0010011;   // ADDI x6, x0, 7
-memory_array[1] = 32'b000000001011_00000_000_00100_0010011;   // ADDI x4, x0, 11
-memory_array[2] = 32'b000000001100_00000_000_00101_0010011;   // ADDI x5, x0, 12
-//memory_array[4] = 32'b0000000_00000_00000_110_00000_0110011;  // OR x0, x0, x0  (NOP)
-//memory_array[4] = 32'b0000000_00000_00000_110_00000_0110011;  // OR x0, x0, x0  (NOP)
-//memory_array[5] = 32'b0000000_00000_00000_110_00000_0110011;  // OR x0, x0, x0  (NOP)
-//memory_array[6] = 32'b0000000_00101_00100_000_10000_1100011;  // BEQ x4, x5, +16
-//memory_array[7] = 32'b0000000_00000_00000_110_00000_0110011;  // OR x0, x0, x0  (NOP) (Branch delay slot)
-//memory_array[8] = 32'b0000000_00000_00000_110_00000_0110011;  // OR x0, x0, x0  (NOP) (Branch delay slot)
-memory_array[3] = 32'b0000000_00100_00110_000_00111_0110011;  // ADD x7, x4, x6 (Execute if branch not taken) = 18
-memory_array[4] = 32'b0100000_00110_00100_000_01000_0110011;  // SUB x8, x4, x6 = 4
-memory_array[5] = 32'b0000000_01000_00100_000_00100_0110011;    // ADD x4, x8 ,x4 = 15
+// Initialize registers
+memory_array[0] = 32'b000000000111_00000_000_00110_0010011;   // ADDI x6, x0, 7   (x6 = 7)
+memory_array[1] = 32'b000000001011_00000_000_00100_0010011;   // ADDI x4, x0, 11  (x4 = 11)
+memory_array[2] = 32'b000000001100_00000_000_00101_0010011;   // ADDI x5, x0, 12  (x5 = 12)
+
+// Register dependency hazard (x7 depends on x6)
+memory_array[3] = 32'b0000000_00100_00110_000_00111_0110011;  // ADD x7, x6, x4   (x7 = x6 + x4 = 18)
+
+// Store x4 in memory  
+memory_array[4] = 32'b0000000_00100_00000_010_00000_0100011;  // SW x4, 0(x0)  (memory[0] = x4)
+
+// Load-Use Hazard
+memory_array[5] = 32'b0000000_00000_00000_010_01000_0000011;  // LW x8, 0(x0)  (Load memory[0] → x8)
+
+memory_array[6] = 32'b0000000_00111_00101_000_00111_0110011;  // ADD x7, x7, x5   (x7 = x7 + x5 = 30)
+memory_array[7] = 32'b0000000_01000_00100_000_01001_0110011;  // ADD x9, x8, x4 (x9 = x8 + x4) <-- Load-Use Hazard
+
+// Store x9 and then load it (store-load hazard)
+
+memory_array[8] = 32'b0000000_00000_00000_010_01010_0000011;  // LW x10, 4(x0)  (x10 = memory[4]) <-- Possible RAW hazard
+memory_array[9] = 32'b0000000_01010_00000_010_01000_0100011;  // SW x10, 8(x0)  (memory[4] = x5)
+// ADD and SUB hazards
+memory_array[10] = 32'b0000000_01010_00101_000_01011_0110011;  // ADD x11, x10, x5 (x11 = x10 + x5)
+memory_array[11] = 32'b0100000_00110_01011_000_01100_0110011;  // SUB x12, x11, x6 (x12 = x11 - x6)
+
+// Store and reload x12
+memory_array[12] = 32'b0000000_01100_00000_010_01000_0100011;  // SW x12, 8(x0) (memory[8] = x12)
+memory_array[13] = 32'b0000000_01000_00000_010_01101_0000011;  // LW x13, 8(x0) (x13 = memory[8])
+
+// Final computation to check correctness
+memory_array[14] = 32'b0000000_01101_01100_000_01110_0110011;  // ADD x14, x13, x12 (Final verification step)
+memory_array[15] = 32'b000000000000_00000_000_00000_1110011;  // EBREAK (Stop execution)
+
+
 
    
 
