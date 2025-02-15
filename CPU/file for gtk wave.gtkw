@@ -1,21 +1,22 @@
 [*]
 [*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
-[*] Sat Feb 15 09:52:24 2025
+[*] Sat Feb 15 16:34:37 2025
 [*]
 [dumpfile] "D:\CO502-2024  Advanced Computer Architecture (Nov 2024)\e20-co502-RV32IM-pipeline-implementation-group-2\CPU\cpu_pipeline.vcd"
-[dumpfile_mtime] "Sat Feb 15 09:50:54 2025"
-[dumpfile_size] 77942
+[dumpfile_mtime] "Sat Feb 15 16:28:06 2025"
+[dumpfile_size] 85767
 [savefile] "D:\CO502-2024  Advanced Computer Architecture (Nov 2024)\e20-co502-RV32IM-pipeline-implementation-group-2\CPU\file for gtk wave.gtkw"
-[timestart] 38
+[timestart] 109
 [size] 1536 793
 [pos] -1 -1
-*-4.000000 55 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-4.000000 103 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] cpu_testbench.
 [treeopen] cpu_testbench.cpu_inst.
+[treeopen] cpu_testbench.cpu_inst.datamemory1.
 [sst_width] 197
 [signals_width] 297
 [sst_expanded] 1
-[sst_vpaned_height] 467
+[sst_vpaned_height] 423
 @28
 cpu_testbench.CLK
 cpu_testbench.RESET
@@ -35,10 +36,24 @@ cpu_testbench.cpu_inst.controlunit1.IMMEDIATE_SELECT[1:0]
 @200
 -forward
 @28
+cpu_testbench.cpu_inst.immForwarding.OPCODE[6:0]
+@24
+cpu_testbench.cpu_inst.immForwarding.RD_old_old[4:0]
+cpu_testbench.cpu_inst.immForwarding.RD_imm_old[4:0]
+cpu_testbench.cpu_inst.immForwarding.SR1[4:0]
+cpu_testbench.cpu_inst.immForwarding.SR2[4:0]
+@28
 cpu_testbench.cpu_inst.immForwarding.Data1_OffsetGenarator[1:0]
 cpu_testbench.cpu_inst.immForwarding.Data2_ImmediateSelect[1:0]
 @200
 -load use
+@28
+cpu_testbench.cpu_inst.load_use_hazard1.FORWARD_MEMORY
+cpu_testbench.cpu_inst.load_use_hazard1.EX_MEMREAD
+@24
+cpu_testbench.cpu_inst.load_use_hazard1.WRITEADDRESS_IDOUT[4:0]
+cpu_testbench.cpu_inst.load_use_hazard1.RS1[4:0]
+cpu_testbench.cpu_inst.load_use_hazard1.RS2[4:0]
 @28
 cpu_testbench.cpu_inst.load_use_hazard1.FRWD_RS1_WB[1:0]
 cpu_testbench.cpu_inst.load_use_hazard1.FRWD_RS2_WB[1:0]
@@ -47,6 +62,17 @@ cpu_testbench.cpu_inst.load_use_hazard1.BUBBLE
 -immediate gen
 @24
 cpu_testbench.cpu_inst.imidiateGenarator1.IMMEDIATE_VALUE[31:0]
+@200
+-branch
+@28
+cpu_testbench.cpu_inst.BranchController1.func3[2:0]
+cpu_testbench.cpu_inst.BranchController1.Branch
+cpu_testbench.cpu_inst.BranchController1.Jump
+@24
+cpu_testbench.cpu_inst.BranchController1.data1[31:0]
+cpu_testbench.cpu_inst.BranchController1.data2[31:0]
+cpu_testbench.cpu_inst.BranchController1.TargetedAddress[31:0]
+cpu_testbench.cpu_inst.BranchController1.PCAddressController
 @200
 -load forward comp
 @28
@@ -68,7 +94,9 @@ cpu_testbench.cpu_inst.registerfile1.DATA2[31:0]
 @24
 cpu_testbench.cpu_inst.ALU.data1[31:0]
 cpu_testbench.cpu_inst.ALU.data2[31:0]
+@420
 cpu_testbench.cpu_inst.ALU.Output[31:0]
+@24
 cpu_testbench.cpu_inst.DATA2_EXOUT[31:0]
 @200
 -registers wb
@@ -79,41 +107,32 @@ cpu_testbench.cpu_inst.registerfile1.\registers[6][31:0]
 cpu_testbench.cpu_inst.registerfile1.\registers[7][31:0]
 cpu_testbench.cpu_inst.registerfile1.\registers[8][31:0]
 cpu_testbench.cpu_inst.registerfile1.\registers[9][31:0]
-@421
-cpu_testbench.cpu_inst.registerfile1.\registers[10][31:0]
-@200
--data1 mux 
-@28
-cpu_testbench.cpu_inst.Data1_MUX.SELECT[1:0]
-@24
-cpu_testbench.cpu_inst.Data1_MUX.INPUT_0[31:0]
-cpu_testbench.cpu_inst.Data1_MUX.INPUT_1[31:0]
-cpu_testbench.cpu_inst.Data1_MUX.INPUT_2[31:0]
-cpu_testbench.cpu_inst.Data1_MUX.INPUT_3[31:0]
-cpu_testbench.cpu_inst.Data1_MUX.OUTPUT[31:0]
-@200
--data mux 2
-@28
-cpu_testbench.cpu_inst.Data2_MUX.SELECT[1:0]
 @420
-cpu_testbench.cpu_inst.Data2_MUX.INPUT_0[31:0]
-cpu_testbench.cpu_inst.Data2_MUX.INPUT_1[31:0]
-cpu_testbench.cpu_inst.Data2_MUX.INPUT_2[31:0]
-cpu_testbench.cpu_inst.Data2_MUX.INPUT_3[31:0]
+cpu_testbench.cpu_inst.registerfile1.\registers[10][31:0]
 @24
-cpu_testbench.cpu_inst.Data2_MUX.OUTPUT[31:0]
+cpu_testbench.cpu_inst.registerfile1.\registers[11][31:0]
+cpu_testbench.cpu_inst.registerfile1.\registers[12][31:0]
+cpu_testbench.cpu_inst.registerfile1.\registers[13][31:0]
 @200
 -d mem
+@24
+cpu_testbench.cpu_inst.datamemory1.\memory_array[0][7:0]
 @22
 cpu_testbench.cpu_inst.datamemory1.\memory_array[2][7:0]
 cpu_testbench.cpu_inst.datamemory1.\memory_array[3][7:0]
+@24
 cpu_testbench.cpu_inst.datamemory1.\memory_array[4][7:0]
+@22
 cpu_testbench.cpu_inst.datamemory1.\memory_array[5][7:0]
 cpu_testbench.cpu_inst.datamemory1.\memory_array[3][7:0]
+@24
 cpu_testbench.cpu_inst.datamemory1.\memory_array[8][7:0]
+@22
 cpu_testbench.cpu_inst.datamemory1.\memory_array[12][7:0]
 @200
 -mem acces mux
+@28
+cpu_testbench.cpu_inst.Memory_access_MUX.SELECT
 @24
 cpu_testbench.cpu_inst.Memory_access_MUX.INPUT_0[31:0]
 cpu_testbench.cpu_inst.Memory_access_MUX.INPUT_1[31:0]
