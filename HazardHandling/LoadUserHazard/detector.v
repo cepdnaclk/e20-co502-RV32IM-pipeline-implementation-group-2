@@ -1,1 +1,0 @@
-module detector(PREV_INST,)
