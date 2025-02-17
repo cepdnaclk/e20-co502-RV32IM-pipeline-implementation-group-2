@@ -1,47 +1,35 @@
-module load_use_hazard(CLK,RESET,LOAD_SIGNAL,MEM_Rd,ALU_RS1,ALU_RS2,FRWD_RS1_WB,FRWD_RS2_WB,BUBBLE);
 
-input CLK,
-input RESET,
-input LOAD_SIG, //Signal indicating that a load instruction is in MEM stage
-input [4:0] MEM_Rd, //Destination register of the load instruction
-input [4:0] ALU_RS1, //First source register in ALU stage
-input [4:0] ALU_RS2, //Second source register
-output reg FRWD_RS1_WB, //Forward data to RS1 from Write Back 
-output reg FRWD_RS2_WB, //Forward data to RS2 from Write Back 
-output reg BUBBLE //Stall cycle
+module load_use_hazard (EX_MEMREAD,MEM_WRITE,RS1,RS2,WRITEADDRESS_IDOUT,FRWD_RS1_WB,FRWD_RS2_WB,BUBBLE,FORWARD_MEMORY);
 
-wire [4:0] ALU_RS1_XNOR,ALU_RS2_XNOR;
-wire RS1_COMPARING,RS2_COMPARING,BUBBLE_WR;
+input EX_MEMREAD,MEM_WRITE;
+input [4:0] RS1, RS2, WRITEADDRESS_IDOUT;
+output reg [1:0] FRWD_RS1_WB, FRWD_RS2_WB;
+output reg BUBBLE,FORWARD_MEMORY;
+always @(*) begin
+    if (EX_MEMREAD && ((RS1 == WRITEADDRESS_IDOUT) || (RS2 == WRITEADDRESS_IDOUT)) && !MEM_WRITE ) begin
+        BUBBLE = 1'b1;         // Stall the pipeline
+        if(RS1 == WRITEADDRESS_IDOUT)begin
+            FRWD_RS1_WB = 2'b01;  // Forwarding if needed
+        end else if(RS2 == WRITEADDRESS_IDOUT) begin
+            FRWD_RS2_WB = 2'b01;
+        end else begin
+            FRWD_RS1_WB = 2'b01;  // Both RS1 and RS2 are forwarded
+            FRWD_RS2_WB = 2'b01;
+        end
 
-//check if this instruction and the previous instruction depend on each other
-assign #1 ALU_RS1_XNOR = (MEM_Rd ~^ ALU_RS1);
-assign #1 ALU_RS2_XNOR = (MEM_Rd ~^ ALU_RS2);
-assign #1 RS1_COMPARING = (&ALU_RS1_XNOR);
-assign #1 RS2_COMPARING = (&ALU_RS2_XNOR);
-assign #1 BUBBLE_WR = RS1_COMPARING | RS2_COMPARING;
-
-always @(LOAD_SIGNAL) begin
-    #1
-    if (LOAD_SIGNAL)
-    begin
-        FRWD_RS1_WB=RS1_COMPARING;
-        FRWD_RS2_WB=RS2_COMPARING;
-        BUBBLE=BUBBLE_WR;
+    end else if ( (RS2 == WRITEADDRESS_IDOUT) && MEM_WRITE) begin
+            FORWARD_MEMORY = 1'b1;
+            BUBBLE = 1'b0;
+            FRWD_RS2_WB = 2'b00;
+            FRWD_RS1_WB = 2'b00;
     end
     else begin
-        FRWD_RS1_WB=1'b0;
-        FRWD_RS2_WB=1'b0;
-        BUBBLE=1'b0;    
+        FORWARD_MEMORY = 1'b0;
+        BUBBLE = 1'b0;
+        FRWD_RS1_WB = 2'b00;  // Forwarding if needed
+        FRWD_RS2_WB = 2'b00;
     end
     
 end
-
-always @(RESET) begin
-    if (RESET) begin
-        FRWD_RS1_WB=1'b0;
-        FRWD_RS2_WB=1'b0;
-        BUBBLE=1'b0;
-    end
-end
-
+    
 endmodule
