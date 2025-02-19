@@ -89,11 +89,11 @@ begin
 end
 
 //Reading & writing
-always @(posedge CLK)
+always @(*)
 begin
     if(READ)
     begin
-        READDATA =#1 {memory_array[ADDRESS],memory_array[ADDRESS+1],memory_array[ADDRESS+2],memory_array[ADDRESS+3]};
+        READDATA =#1 {memory_array[ADDRESS+3],memory_array[ADDRESS+2],memory_array[ADDRESS+1],memory_array[ADDRESS]};
     end
     if(WRITE)
 	begin
